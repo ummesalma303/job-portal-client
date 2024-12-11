@@ -1,9 +1,19 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import logo from '../../assets/smal-logo.png'
+import { NavLink } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
 const Navbar = () => {
+    const {user,signOutUser} = useContext(AuthContext)
+    const link=<>
+    <NavLink to='/'>Home</NavLink>
+    <NavLink to='/'>Home</NavLink>
+    <NavLink to='/'>Home</NavLink>
+    </>
+
+    console.log(user)
     return (
-        <div>
-            <div className="navbar bg-base-100">
+        <div className='bg-base-100'>
+            <div className="navbar max-w-[1780px] mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -23,36 +33,26 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        {link}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost text-xl">
+        <img className='w-14' src={logo} alt="" />
+        <h2>Job Portal</h2>
+    </a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal px-1 space-x-4">
+      {link}
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    {
+      user?<div><h2>{user?.email}</h2><button className='btn btn-primary text-white' onClick={signOutUser}>Sign Out</button></div>:<div className="space-x-4">
+      <NavLink to='/register'><button className='underline'>Register</button></NavLink>
+      <NavLink to='/signIn'><button className='btn btn-primary text-white'>Sign In</button></NavLink>
+    </div>
+    }
   </div>
 </div>
         </div>
