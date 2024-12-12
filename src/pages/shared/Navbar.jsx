@@ -6,11 +6,11 @@ const Navbar = () => {
     const {user,signOutUser} = useContext(AuthContext)
     const link=<>
     <NavLink to='/'>Home</NavLink>
-    <NavLink to='/'>Home</NavLink>
+    <NavLink to='/myApplication'>My Application</NavLink>
     <NavLink to='/'>Home</NavLink>
     </>
 
-    console.log(user)
+    // console.log(user)
     return (
         <div className='bg-base-100'>
             <div className="navbar max-w-[1780px] mx-auto">

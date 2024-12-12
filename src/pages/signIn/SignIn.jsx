@@ -3,11 +3,13 @@ import React, { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import login from '../../assets/lottie/signIn.json'
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../shared/socialLogin';
 const SignIn = () => {
-    const {signInUser}=useContext(AuthContext)
+    const {signInUser}=useContext(AuthContext) 
+    const location = useLocation()
     const navigate = useNavigate()
+    const form = location.state || '/'
     const handleSignIn=e=>{
         e.preventDefault()
         const email= e.target.email.value
@@ -22,7 +24,8 @@ const SignIn = () => {
                 text: "Successfully create your account",
                 icon: "success"
               });
-              navigate('/')
+              navigate(form)
+              // location.state || navigate('/')
         })
         .catch((error) => {
             Swal.fire({
@@ -30,7 +33,7 @@ const SignIn = () => {
                 text: `${error.message}`,
                 icon: "error"
               });
-            console.log(error.message)
+          
           });
     }
     return (
@@ -55,12 +58,12 @@ const SignIn = () => {
         <span className="label-text">Password</span>
       </label>
       <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-      <label className="label">
-        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-      </label>
+      <p className='mt-3'>
+        If you are a new User.Please <Link to='/register' className="link link-hover text-teal-500">Register</Link>
+      </p>
     </div>
     <div className="form-control mt-6">
-      <button type='submit' className="btn bg-[#05264E] text-white">Register</button>
+      <button type='submit' className="btn bg-[#05264E] text-white">Sign In</button>
     </div>
    <div type='button'> <div className="divider">OR</div>
    <SocialLogin></SocialLogin></div>

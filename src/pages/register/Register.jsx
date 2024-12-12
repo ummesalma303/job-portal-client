@@ -3,7 +3,7 @@ import register from '../../assets/lottie/register.json'
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../shared/socialLogin';
 const Register = () => {
     const {createUser}=useContext(AuthContext);
@@ -54,9 +54,10 @@ const Register = () => {
             <span className="label-text">Password</span>
           </label>
           <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
+          <p className='mt-3'>
+        Already have an account.Please <Link to='/signIn' className="link link-hover text-teal-500">Sign In</Link>
+      </p>
+   
         </div>
         <div className="form-control mt-6">
           <button type='submit' className="btn bg-[#05264E] text-white">Register</button>

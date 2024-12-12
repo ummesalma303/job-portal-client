@@ -12,7 +12,7 @@ const Category = () => {
             <p>Find the job that’s perfect for you. about 800+ new jobs everyday</p>
         </div>
         
-        <div className="flex flex-wrap space-x-7 justify-center my-12">
+        <div className="flex flex-wrap gap-7 justify-center my-12">
             <motion.span whileHover={{ scale: 1.1 }} transition={{ duration:0.5 }} className="flex items-center border-[1px] border-gray-400 hover:border-blue-300 max-w-fit rounded-lg shadow-none hover:shadow-lg p-4 space-x-2" >
                 <img src={category1} alt="" />
                 <div>

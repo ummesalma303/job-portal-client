@@ -4,6 +4,7 @@ import auth from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import Swal from 'sweetalert2';
 
+
 const AuthProvider = ({children}) => {
     const [loading,setLoading]=useState(true);
     const [user,setUser]=useState(null);
@@ -43,7 +44,7 @@ const AuthProvider = ({children}) => {
         const subscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
-            console.log(currentUser)
+            // console.log(currentUser)
         })
         return ()=> subscribe()
     },[])
@@ -53,6 +54,7 @@ const AuthProvider = ({children}) => {
         signInUser,
         signOutUser,
         user,
+        loading,
         setUser
     }
     return (
