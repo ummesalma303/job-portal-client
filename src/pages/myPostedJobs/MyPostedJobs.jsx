@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/UseAuth';
+import { Link } from 'react-router-dom';
 
 const MyPostedJobs = () => {
     const {user}=useAuth()
     const [jobs,setJobs] = useState([])
-    console.log(jobs)
+    
     useEffect(()=>{
         fetch(`http://localhost:5000/jobs?email=${user.email}`)
         .then(res=>res.json())
@@ -12,7 +13,7 @@ const MyPostedJobs = () => {
     },[])
     return (
         <div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto my-9">
   <table className="table">
     {/* head */}
     <thead>
@@ -24,7 +25,7 @@ const MyPostedJobs = () => {
         <th>Applications</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody className='my-10'>
       {/* row 1 */}
       {
         jobs.map((job,i)=>(
@@ -32,8 +33,8 @@ const MyPostedJobs = () => {
             <th>{i+1}</th>
             <td>{job.title}</td>
             <td>{job.applicationDeadline}</td>
-            <td></td>
-            <td><button className='btn'>View Applications</button></td>
+            <td>{job.applicationCount}</td>
+            <td><Link to={`/viewApplication/${job._id}`}><button className='link link-primary'>View Applications</button></Link></td>
           </tr>))
       }
       

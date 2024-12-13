@@ -37,8 +37,8 @@ const AddJob = () => {
     
   }
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className=" bg-base-100 w-full max-w-7xl">
+    <div className="hero min-h-screen my-20">
+      <div className="  bg-base-200 w-full max-w-7xl py-20">
         <form onSubmit={handleAddJob}  className="card-body">
           {/* job title */}
           <div className="form-control">
