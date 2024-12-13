@@ -7,7 +7,8 @@ const Navbar = () => {
     const link=<>
     <NavLink to='/'>Home</NavLink>
     <NavLink to='/myApplication'>My Application</NavLink>
-    <NavLink to='/'>Home</NavLink>
+    <NavLink to='/addJob'>Add A Job</NavLink>
+    <NavLink to='/myPostedJobs'>My Posted Jobs</NavLink>
     </>
 
     // console.log(user)
