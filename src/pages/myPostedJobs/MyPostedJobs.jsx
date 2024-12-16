@@ -12,7 +12,7 @@ const MyPostedJobs = () => {
         .then(data=>setJobs(data))
     },[])
     return (
-        <div>
+        <div className='w-[1280px] mx-auto'>
             <div className="overflow-x-auto my-9">
   <table className="table">
     {/* head */}

@@ -53,11 +53,11 @@ const HotJobCard = ({job}) => {
     <p>{description}</p>
     <div className='flex flex-wrap gap-4 '>
         {
-            requirements.map((requirement,i)=><p className='border border-gray-200 hover:border-blue-400 p-3 ' key={i}>{requirement}</p>)
+            requirements?.map((requirement,i)=><p className='border border-gray-200 hover:border-blue-400 p-3 ' key={i}>{requirement}</p>)
         }
     </div>
     <div className="card-actions mt-6 items-center">
-        <p className='font-semibold'>Salary Range:${salaryRange.min}-{salaryRange.max}{salaryRange.currency}</p>
+        <p className='font-semibold'>Salary Range:${salaryRange?.min}-{salaryRange?.max}{salaryRange?.currency}</p>
       <Link to={`/jobs/${_id}`}><button className="btn btn-primary">Apply Now</button></Link>
     </div>
   </div>

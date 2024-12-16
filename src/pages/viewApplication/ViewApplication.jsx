@@ -14,18 +14,18 @@ const ViewApplication = () => {
         }
         axios.patch(`http://localhost:5000/job-applications/${id}`,statusData)
         .then(data=>{
-                   console.log(data.data)
-                //    if(data.data.modifiedCount>0){
+                //    console.log(data.data)
+                   if(data.data.modifiedCount>0){
    
-                //        Swal.fire({
-                //            position: "top-end",
-                //            icon: "success",
-                //            title: "Update Status",
-                //            showConfirmButton: false,
-                //            timer: 1500
-                //          });
+                       Swal.fire({
+                           position: "top-end",
+                           icon: "success",
+                           title: "Update Status",
+                           showConfirmButton: false,
+                           timer: 1500
+                         });
                        
-                //    }
+                   }
                })
                .catch(err=>console.log(err.message))
     }

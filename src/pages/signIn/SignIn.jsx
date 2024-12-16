@@ -5,16 +5,18 @@ import login from '../../assets/lottie/signIn.json'
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../shared/socialLogin';
+import axios from 'axios';
 const SignIn = () => {
     const {signInUser}=useContext(AuthContext) 
     const location = useLocation()
     const navigate = useNavigate()
     const form = location.state || '/'
+    // console.log(user?.email)
     const handleSignIn=e=>{
         e.preventDefault()
         const email= e.target.email.value
         const password= e.target.password.value
-        console.log(email,password)
+        // console.log(email,password)
         
         signInUser(email,password)
         .then(data=>{
@@ -24,17 +26,24 @@ const SignIn = () => {
                 text: "Successfully create your account",
                 icon: "success"
               });
-              navigate(form)
+
+              const user={email:email}
+
+              axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+              .then(res=>console.log(res.data))
+              .catch(err=>console.log(err))
+              // navigate(form)
               // location.state || navigate('/')
         })
         .catch((error) => {
+          console.log(error)
             Swal.fire({
                 title: "Success",
                 text: `${error.message}`,
                 icon: "error"
               });
-          
-          });
+              
+            });
     }
     return (
         <div>

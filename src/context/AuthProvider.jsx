@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         signOut(auth)
         .then(data=>{
-            console.log(data)
+            setUser(data)
             Swal.fire({
                 title: "Success",
                 text: "Sign Out Successfully",

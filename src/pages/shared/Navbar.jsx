@@ -14,7 +14,7 @@ const Navbar = () => {
     // console.log(user)
     return (
         <div className='bg-base-100'>
-            <div className="navbar max-w-[1780px] mx-auto">
+            <div className="navbar max-w-[1380px] mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

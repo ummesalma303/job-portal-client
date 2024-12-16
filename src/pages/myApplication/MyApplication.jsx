@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/UseAuth';
+import axios from 'axios';
 
 const MyApplication = () => {
     const {user}=useAuth()
     const [jobs,setJobs]=useState([]);
     // console.log(jobs)
     useEffect(()=>{
-        fetch(`http://localhost:5000/job-applications?email=${user.email}`)
-        .then(res=>res.json())
-        .then(data=>setJobs(data))
+        // fetch(`http://localhost:5000/job-applications?email=${user.email}`)
+        // .then(res=>res.json())
+        // .then(data=>{
+        //   console.log(data)
+        //   setJobs(data)})
+
+        axios.get(`http://localhost:5000/job-applications?email=${user.email}`,{withCredentials:true})
+        .then(data=>{
+          console.log(data?.data)
+          setJobs(data?.data)})
+          .catch(err=>console.log(err))
     },[user.email])
     return (
         <div>
-            <h2 className='text-4xl'>My Applications {jobs.length}</h2>
+            <h2 className='text-4xl'>My Applications {jobs?.length}</h2>
 
             <div className="overflow-x-auto">
   <table className="table">
